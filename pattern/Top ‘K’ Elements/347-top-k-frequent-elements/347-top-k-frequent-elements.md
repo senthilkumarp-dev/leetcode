@@ -63,7 +63,7 @@ Example:
 
 ---
 
-## ✅ Java Solution
+## ✅ code
 
 ```java
 class Solution {
