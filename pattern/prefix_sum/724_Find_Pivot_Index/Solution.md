@@ -66,7 +66,7 @@ If `Left sum == Right sum`, we’ve found the pivot index.
 
 # Code
 
-```javascript
+```javascript []
 /**
  * @param {number[]} nums
  * @return {number}
@@ -84,4 +84,37 @@ var pivotIndex = function (nums) {
   }
   return -1;
 };
+```
+
+```Java []
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int leftTotal = 0;
+        int total = 0;
+        for(int num : nums){
+            total+=num;
+        }
+        for(int i = 0 ; i < nums.length ; i++){
+            int rightTotal  = total - leftTotal - nums[i];
+            if(rightTotal == leftTotal){
+                return i ;
+            }
+            leftTotal+=nums[i];
+        }
+        return -1;
+    }
+}
+```
+
+```python []
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+        total = sum(nums)
+        left_total = 0
+        for i in range(0,len(nums)):
+            right_total = total - left_total - nums[i]
+            if left_total == right_total:
+                return i
+            left_total+=nums[i]
+        return -1
 ```
