@@ -8,6 +8,12 @@ function printSubSeq(idx, ds, arr, n) {
   ds.push(arr[idx]);
   printSubSeq(idx + 1, ds, arr, n);
   ds.pop();
+
+  // Another way
+  // ds.push(arr[idx]);
+  // printSubSeq(idx + 1, ds, arr, n);
+  // ds.pop();
+  // printSubSeq(idx + 1, ds, arr, n);
 }
 let arr = [3, 1, 2];
 let n = 3;
