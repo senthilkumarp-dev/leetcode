@@ -27,7 +27,28 @@ If this property breaks at some point, the single element lies in that half of t
 ---
 
 # Code
-```javascript []
+``` java []
+class Solution {
+    public int singleNonDuplicate(int[] nums) {
+        int left  = 0;
+        int right = nums.length-1;
+        while(left < right){
+            int mid = (left+right)/2;
+            if( mid%2 == 1 ){
+                mid--;
+            }
+            if(nums[mid]==nums[mid+1]){
+                left=mid+2;
+            }
+            else{
+                right = mid;
+            }
+        }
+        return nums[left];
+    }
+}
+```
+``` javascript []
 /**
  * @param {number[]} nums
  * @return {number}
@@ -52,3 +73,19 @@ var singleNonDuplicate = function(nums) {
     }
     return nums[l];
 };
+```
+``` python []
+class Solution:
+    def singleNonDuplicate(self, nums: List[int]) -> int:
+        left = 0
+        right = len(nums)-1
+        while left < right:
+            mid = (left+right)//2
+            if mid%2==1:
+                mid = mid -1
+            if nums[mid]==nums[mid+1]:
+                left = mid+2
+            else:
+                right = mid
+        return nums[left]
+```
