@@ -42,7 +42,7 @@ This ensures all operations run in constant time.
 ---
 
 # Code
-```javascript
+``` javascript []
 var MinStack = function() {
     this.stack = [];
 };
@@ -80,16 +80,30 @@ MinStack.prototype.top = function() {
 MinStack.prototype.getMin = function() {
     return this.stack[this.stack.length - 1][1];
 };
-
-/** 
- * Example usage:
- * var obj = new MinStack();
- * obj.push(-2);
- * obj.push(0);
- * obj.push(-3);
- * console.log(obj.getMin()); // -3
- * obj.pop();
- * console.log(obj.top());    // 0
- * console.log(obj.getMin()); // -2
- */
-
+```
+``` Java []
+class MinStack {
+    public List<int[]> stack ;
+    public MinStack() {
+        this.stack =  new ArrayList<>();
+    }
+    
+    public void push(int val) {
+       
+        int min = stack.isEmpty() ? val : Math.min(val, getMin());
+        this.stack.add(new int[]{val,min});
+    }
+    
+    public void pop() {
+        this.stack.remove(this.stack.size()-1);
+    }
+    
+    public int top() {
+        return this.stack.get(this.stack.size()-1)[0];
+    }
+    
+    public int getMin() {
+        return this.stack.get(this.stack.size()-1)[1];
+    }
+}
+```
