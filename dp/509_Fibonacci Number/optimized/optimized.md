@@ -46,7 +46,8 @@ var fib = function (n) {
   return prev1;
 };
 ```
-``` java []
+
+```java []
 class Solution {
     public int fib(int n) {
         if(n<2){
@@ -62,4 +63,18 @@ class Solution {
         return prev1;
     }
 }
+```
+
+```Python []
+class Solution:
+    def fib(self, n: int) -> int:
+        if n < 2:
+            return n
+        prev1 = 1
+        prev2 = 0
+        for i in range(2,n+1):
+            curr = prev1+prev2
+            prev2 = prev1
+            prev1 = curr
+        return prev1
 ```
