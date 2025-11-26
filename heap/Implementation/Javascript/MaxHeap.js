@@ -41,4 +41,10 @@ class MaxHeap {
       idx = swap;
     }
   }
+  peek(){
+    return this.data[0];
+  }
+  size(){
+    return this.data.length;
+  }
 }
