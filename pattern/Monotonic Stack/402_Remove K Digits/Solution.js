@@ -6,11 +6,7 @@
 var removeKdigits = function (num, k) {
   let stack = [];
   for (let digit of num.split("")) {
-    while (
-      stack.length &&
-      k > 0 &&
-      BigInt(stack[stack.length - 1]) > BigInt(digit)
-    ) {
+    while (stack.length && k > 0 && stack[stack.length - 1] > digit) {
       stack.pop();
       k--;
     }
@@ -20,12 +16,7 @@ var removeKdigits = function (num, k) {
     stack.pop();
     k--;
   }
-  let ans = 0;
-  for (let i = 0; i < stack.length; i++) {
-    ans = ans + "" + stack[i];
-  }
-  while (ans[0] == "0") {
-    ans = ans.slice(1);
-  }
-  return ans || "0";
+  while (stack.length && stack[0] === "0") stack.shift();
+
+  return stack.length ? stack.join("") : "0";
 };
